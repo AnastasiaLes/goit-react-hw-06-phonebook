@@ -4,6 +4,7 @@ import { ContactField, FieldName, AddContactButton } from './Form.styled';
 import { nanoid } from 'nanoid';
 import * as yup from 'yup';
 
+
 const schema = yup.object().shape({
   name: yup.string().required(),
   number: yup.number().required().positive(),
@@ -16,7 +17,7 @@ const initialValues = {
 
 export function NameField({onSubmit})  {
 
-const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (values, { resetForm }) => {
     const { name, number } = values;
     const newContact = {
       name,

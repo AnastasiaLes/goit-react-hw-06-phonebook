@@ -1,17 +1,20 @@
 import { ListElement, DeleteBtn } from './ContactList.styled';
+import { useDispatch } from 'react-redux';
+import { removeContacts } from 'redux/contactsSlice';
 
-export const ContactList = ({ contacts, onDeleteContact }) => {
+export const ContactList = ({listOfContacts}) => {
+  const dispatch = useDispatch();
   return (
     <div>
       <h2>Contacts</h2>
-      {contacts.length > 0 && (
+      {listOfContacts.length > 0 && (
         <ul>
-          {contacts.map(contact => (
+          {listOfContacts.map(contact => (
             <ListElement key={contact.id}>
               {contact.name}: {contact.number}
               <DeleteBtn
                 type="button"
-                onClick={() => onDeleteContact(contact.id)}
+                onClick={() => dispatch(removeContacts(contact.id))}
               >
                 Delete
               </DeleteBtn>
